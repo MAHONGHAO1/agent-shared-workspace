@@ -1,6 +1,7 @@
 # Agent Shared Workspace
 
 [![Tests](https://github.com/MAHONGHAO1/agent-shared-workspace/actions/workflows/tests.yml/badge.svg)](https://github.com/MAHONGHAO1/agent-shared-workspace/actions/workflows/tests.yml)
+[![PyPI version](https://img.shields.io/pypi/v/agent-shared-workspace.svg)](https://pypi.org/project/agent-shared-workspace/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -71,21 +72,21 @@ npx skills add MAHONGHAO1/agent-shared-workspace
 ```
 
 ### 3. MCP Server（零外部依赖，支持 Cursor / Claude Desktop / Antigravity）
+无需 clone 仓库，直接通过 `uvx` 一行拉起：
 ```json
 {
   "mcpServers": {
     "agent-shared-workspace": {
-      "command": "python",
-      "args": ["-m", "agent_shared_workspace.mcp_server"],
+      "command": "uvx",
+      "args": ["--from", "agent-shared-workspace", "agent-workspace-mcp"],
       "env": {
-        "PYTHONPATH": "/path/to/agent-shared-workspace/src",
         "AGENT_WORKSPACE_ROOT": "/path/to/your-workspace"
       }
     }
   }
 }
 ```
-> 亦支持标准 Python 包安装：`pip install .` 后可直接运行 `agent-workspace`（CLI）与 `agent-workspace-mcp`（MCP stdio Server）。
+> 也可通过 `pip install agent-shared-workspace` 全局安装 `agent-workspace`（CLI）与 `agent-workspace-mcp`（MCP stdio Server）。
 
 ### 4. DeepSeek Harness 插件包
 仓库内置即用型 DSh 插件包位于 [`integrations/deepseek-harness/`](integrations/deepseek-harness/)（包名 `dsh-agent-shared-workspace`，通过 `@deepseek-ai/dsh-skill-filesystem` 自动挂载共享记忆技能与 CLI）。

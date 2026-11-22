@@ -1,6 +1,7 @@
 # Agent Shared Workspace
 
 [![Tests](https://github.com/MAHONGHAO1/agent-shared-workspace/actions/workflows/tests.yml/badge.svg)](https://github.com/MAHONGHAO1/agent-shared-workspace/actions/workflows/tests.yml)
+[![PyPI version](https://img.shields.io/pypi/v/agent-shared-workspace.svg)](https://pypi.org/project/agent-shared-workspace/)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -71,21 +72,21 @@ Ships with a self-contained stdlib `scripts/workspace_tool.py` inside the skill 
 ```
 
 ### 3. MCP Server (Zero Dependencies — Cursor / Claude Desktop / Antigravity)
+No git clone required — run directly via `uvx`:
 ```json
 {
   "mcpServers": {
     "agent-shared-workspace": {
-      "command": "python",
-      "args": ["-m", "agent_shared_workspace.mcp_server"],
+      "command": "uvx",
+      "args": ["--from", "agent-shared-workspace", "agent-workspace-mcp"],
       "env": {
-        "PYTHONPATH": "/path/to/agent-shared-workspace/src",
         "AGENT_WORKSPACE_ROOT": "/path/to/your-workspace"
       }
     }
   }
 }
 ```
-> Or install locally via `pip install .` to expose `agent-workspace` (CLI) and `agent-workspace-mcp` (MCP stdio server).
+> Or install globally via `pip install agent-shared-workspace` to expose `agent-workspace` (CLI) and `agent-workspace-mcp` (MCP stdio server).
 
 ### 4. DeepSeek Harness Plugin Bundle
 Ready-to-publish DSH bundle lives in [`integrations/deepseek-harness/`](integrations/deepseek-harness/) (`dsh-agent-shared-workspace`, mounts the skill via `@deepseek-ai/dsh-skill-filesystem`).
