@@ -56,6 +56,40 @@ flowchart LR
 
 ![Real CLI Demo](docs/assets/cli-demo.png)
 
+## One-Line Install (4 Distribution Channels)
+
+### 1. Agent Skill (`skills.sh` / Codex / Claude Code / Antigravity / Cursor)
+```bash
+npx skills add MAHONGHAO1/agent-shared-workspace
+```
+Ships with a self-contained stdlib `scripts/workspace_tool.py` inside the skill folder.
+
+### 2. Claude Code Plugin (Skill + MCP Server)
+```text
+/plugin marketplace add MAHONGHAO1/agent-shared-workspace
+/plugin install agent-shared-workspace
+```
+
+### 3. MCP Server (Zero Dependencies — Cursor / Claude Desktop / Antigravity)
+```json
+{
+  "mcpServers": {
+    "agent-shared-workspace": {
+      "command": "python",
+      "args": ["-m", "agent_shared_workspace.mcp_server"],
+      "env": {
+        "PYTHONPATH": "/path/to/agent-shared-workspace/src",
+        "AGENT_WORKSPACE_ROOT": "/path/to/your-workspace"
+      }
+    }
+  }
+}
+```
+> Or install locally via `pip install .` to expose `agent-workspace` (CLI) and `agent-workspace-mcp` (MCP stdio server).
+
+### 4. DeepSeek Harness Plugin Bundle
+Ready-to-publish DSH bundle lives in [`integrations/deepseek-harness/`](integrations/deepseek-harness/) (`dsh-agent-shared-workspace`, mounts the skill via `@deepseek-ai/dsh-skill-filesystem`).
+
 ## Quick Start
 
 Zero third-party packages required (Python 3.9+ stdlib only):
@@ -150,9 +184,10 @@ Trade-off: keyword, tag, and ID lookup only (no semantic similarity). Ideal for 
 
 ```bash
 python -m unittest discover -s tests -v
+cd integrations/deepseek-harness && npm run check
 ```
 
-12 end-to-end tests run in isolated temp directories on both **Ubuntu** and **Windows** in GitHub Actions, including an **8-process concurrent write stress test** and a **lock-timeout verification test**.
+**15 Python end-to-end tests + 3 Node.js DSH bundle checks** run in isolated temp directories on both **Ubuntu** and **Windows** in GitHub Actions, including an **8-process concurrent write stress test**, **lock-timeout verification**, and a full **MCP stdio JSON-RPC lifecycle test**.
 
 ## License
 

@@ -1,0 +1,9 @@
+# DeepSeek Harness filesystem Skill provider for Agent Shared Workspace.
+# Resolves the packaged skills/ directory anchored at the DSH profile baseUrl.
+- insert:
+    - id: agent-shared-workspace-skill-filesystem
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: agent-shared-workspace
+        includeDefaultRoots: true
+        bundledSkillDir: !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-agent-shared-workspace/package.json')), 'skills')

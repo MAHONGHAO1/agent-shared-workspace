@@ -56,6 +56,40 @@ flowchart LR
 
 ![Real CLI Demo](docs/assets/cli-demo.png)
 
+## 一键安装（4 种方式任选）
+
+### 1. Agent Skill（`skills.sh` / Codex / Claude Code / Antigravity / Cursor）
+```bash
+npx skills add MAHONGHAO1/agent-shared-workspace
+```
+技能目录自带零依赖 `scripts/workspace_tool.py`，装完即可直接使用。
+
+### 2. Claude Code 插件（含 Skill + MCP Server）
+```text
+/plugin marketplace add MAHONGHAO1/agent-shared-workspace
+/plugin install agent-shared-workspace
+```
+
+### 3. MCP Server（零外部依赖，支持 Cursor / Claude Desktop / Antigravity）
+```json
+{
+  "mcpServers": {
+    "agent-shared-workspace": {
+      "command": "python",
+      "args": ["-m", "agent_shared_workspace.mcp_server"],
+      "env": {
+        "PYTHONPATH": "/path/to/agent-shared-workspace/src",
+        "AGENT_WORKSPACE_ROOT": "/path/to/your-workspace"
+      }
+    }
+  }
+}
+```
+> 亦支持标准 Python 包安装：`pip install .` 后可直接运行 `agent-workspace`（CLI）与 `agent-workspace-mcp`（MCP stdio Server）。
+
+### 4. DeepSeek Harness 插件包
+仓库内置即用型 DSh 插件包位于 [`integrations/deepseek-harness/`](integrations/deepseek-harness/)（包名 `dsh-agent-shared-workspace`，通过 `@deepseek-ai/dsh-skill-filesystem` 自动挂载共享记忆技能与 CLI）。
+
 ## 快速开始（30 秒跑通）
 
 无需安装任何第三方依赖（Python 3.9+ 标准库即可运行）：
@@ -176,14 +210,16 @@ your-workspace/
 
 ```bash
 python -m unittest discover -s tests -v
+cd integrations/deepseek-harness && npm run check
 ```
 
-仓库内置 12 项端到端自动化测试（全部在临时目录运行，不碰真实工作区），在 GitHub Actions 上覆盖 **Ubuntu + Windows** 双平台矩阵：
+仓库内置 **15 项 Python 端到端测试 + 3 项 Node DSh 插件校验**（全部在临时目录运行，不碰真实工作区），在 GitHub Actions 上覆盖 **Ubuntu + Windows** 双平台矩阵：
 - `init` 中英文骨架初始化与幂等性
 - `exp add / update / search / --tag / --list-tags`
 - `project new / handoff / status / guard / commit`
 - **8 进程真实并发写压测**（验证文件锁串行化与编号连续无损）
 - **锁持有超时退出验证**
+- **MCP stdio JSON-RPC 全生命周期测试**（`initialize` / `tools/list` / `tools/call`）与多渠道清单同步校验
 
 ## 边界
 

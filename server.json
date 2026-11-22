@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.MAHONGHAO1/agent-shared-workspace",
+  "description": "Zero-dependency plain-text shared memory hub for multiple coding agents (Markdown SSOT + file locking + Git).",
+  "repository": {
+    "url": "https://github.com/MAHONGHAO1/agent-shared-workspace",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "agent-shared-workspace",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "AGENT_WORKSPACE_ROOT",
+          "description": "Root directory of the shared agent workspace (defaults to current working directory).",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

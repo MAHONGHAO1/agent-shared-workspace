@@ -1,0 +1,14 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      workspaceRoot:
+        type: string
+        description: Absolute path to your shared agent workspace (defaults to current working directory).
+  commandFunction: |-
+    (config) => ({
+      command: "uvx",
+      args: ["--from", "agent-shared-workspace", "agent-workspace-mcp"],
+      env: config.workspaceRoot ? { AGENT_WORKSPACE_ROOT: config.workspaceRoot } : {}
+    })

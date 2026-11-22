@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-shared-workspace-marketplace",
+  "description": "Plain-text shared memory plugin and skill for multiple coding agents.",
+  "owner": {
+    "name": "MAHONGHAO1"
+  },
+  "plugins": [
+    {
+      "name": "agent-shared-workspace",
+      "description": "Shared memory hub for Codex, Claude Code, DeepSeek Harness, and Antigravity: Markdown SSOT + concurrency-safe CLI + zero-dependency MCP server.",
+      "version": "0.1.0",
+      "author": {
+        "name": "MAHONGHAO1"
+      },
+      "category": "productivity",
+      "source": "./"
+    }
+  ]
+}

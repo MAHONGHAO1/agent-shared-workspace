@@ -19,5 +19,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run end-to-end CLI tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run Python CLI, concurrency lock & MCP tests
         run: python -m unittest discover -s tests -v
+
+      - name: Run DeepSeek Harness plugin bundle checks
+        working-directory: integrations/deepseek-harness
+        run: npm run check

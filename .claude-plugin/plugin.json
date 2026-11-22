@@ -1,0 +1,19 @@
+{
+  "name": "agent-shared-workspace",
+  "version": "0.1.0",
+  "description": "Plain-text shared memory hub for multiple coding agents: Markdown SSOT, cross-process locked CLI, tagged experiences, handoffs, dirty-tree guard, and zero-dependency MCP server.",
+  "author": {
+    "name": "MAHONGHAO1"
+  },
+  "homepage": "https://github.com/MAHONGHAO1/agent-shared-workspace",
+  "repository": "https://github.com/MAHONGHAO1/agent-shared-workspace",
+  "license": "MIT",
+  "keywords": [
+    "multi-agent",
+    "shared-memory",
+    "skills",
+    "mcp",
+    "markdown",
+    "git"
+  ]
+}

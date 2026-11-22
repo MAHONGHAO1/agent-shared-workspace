@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-shared-workspace"
+version = "0.1.0"
+description = "Plain-text shared memory hub for multiple coding agents: Markdown SSOT + concurrency-safe CLI + zero-dependency MCP server."
+readme = "README.en.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+  { name = "MAHONGHAO1" }
+]
+keywords = [
+  "ai-agents",
+  "multi-agent",
+  "memory",
+  "mcp",
+  "cli",
+  "markdown",
+  "claude-code",
+  "codex"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Utilities"
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/MAHONGHAO1/agent-shared-workspace"
+Repository = "https://github.com/MAHONGHAO1/agent-shared-workspace"
+Issues = "https://github.com/MAHONGHAO1/agent-shared-workspace/issues"
+
+[project.scripts]
+agent-workspace = "agent_shared_workspace.cli:main"
+agent-workspace-mcp = "agent_shared_workspace.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["agent_shared_workspace*"]
