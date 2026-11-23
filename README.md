@@ -107,7 +107,7 @@ npx skills add MAHONGHAO1/agent-shared-workspace
 
 ```bash
 uv tool install agent-shared-workspace   # 或 pip install agent-shared-workspace
-agent-workspace --version
+agent-workspace --help
 ```
 
 然后在你的共享工作空间目录里：
@@ -182,7 +182,7 @@ your-workspace/
 
 | 命令 | 作用 |
 | --- | --- |
-| `--version` | 打印 CLI 版本 |
+| `--version` | 打印 CLI 版本（v0.1.1 起） |
 | `init [--lang zh\|en] [--no-git]` | 幂等初始化骨架文档、配置文件、`.gitignore` 与 Git（不覆盖已有文件） |
 | `status [--guard]` | 查看进行中项目与 Git 状态；加 `--guard` 在有未提交改动时返回退出码 1 |
 | `guard` | 轻量未提交巡检：干净返回 0，有未提交改动打印提醒并返回 1 |

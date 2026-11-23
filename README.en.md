@@ -105,7 +105,7 @@ Runtime has zero third-party dependencies (Python 3.9+ stdlib). Install the CLI 
 
 ```bash
 uv tool install agent-shared-workspace   # or pip install agent-shared-workspace
-agent-workspace --version
+agent-workspace --help
 ```
 
 Then, in your workspace directory:
@@ -154,7 +154,7 @@ agent-workspace commit -m "docs: initialize workspace and log EXP-001"
 
 | Command | Purpose |
 | --- | --- |
-| `--version` | Print the CLI version |
+| `--version` | Print the CLI version (v0.1.1+) |
 | `init [--lang zh\|en] [--no-git]` | Idempotently scaffold docs, `workspace.config.json`, `.gitignore`, and Git |
 | `status [--guard]` | Show active projects and Git status; `--guard` exits with code 1 if dirty |
 | `guard` | Lightweight dirty-tree check (exit 0 when clean, exit 1 when dirty) |
