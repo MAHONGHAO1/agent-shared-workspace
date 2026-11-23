@@ -27,6 +27,19 @@ else:
 # Local upstream default; set to None in portable distributions to default to cwd.
 DEFAULT_WORKSPACE_ROOT: Path | None = None
 
+# Keep this in sync with pyproject.toml; tests/test_cli_copies.py checks it.
+CLI_VERSION = "0.1.0"
+
+
+def cli_version() -> str:
+    """Return the installed package version, or the bundled fallback."""
+    try:
+        from importlib.metadata import version
+
+        return version("agent-shared-workspace")
+    except Exception:
+        return CLI_VERSION
+
 DEFAULT_FILES_ZH = {
     "agents": "AGENTS.md",
     "board": "全局工作台.md",
@@ -964,6 +977,9 @@ def cmd_commit(msg: str) -> None:
 # -------------------------------------------------------------
 def main() -> None:
     parser = argparse.ArgumentParser(description="Multi-Agent Workspace Hub CLI")
+    parser.add_argument(
+        "--version", action="version", version=f"agent-workspace {cli_version()}"
+    )
     subparsers = parser.add_subparsers(dest="command")
 
     # --- init ---
