@@ -154,7 +154,7 @@ agent-workspace commit -m "docs: initialize workspace and log EXP-001"
 
 | Command | Purpose |
 | --- | --- |
-| `--version` | Print the CLI version (v0.1.1+) |
+| `--version` | Print the CLI version (on main; not yet in PyPI 0.1.0) |
 | `init [--lang zh\|en] [--no-git]` | Idempotently scaffold docs, `workspace.config.json`, `.gitignore`, and Git |
 | `status [--guard]` | Show active projects and Git status; `--guard` exits with code 1 if dirty |
 | `guard` | Lightweight dirty-tree check (exit 0 when clean, exit 1 when dirty) |
